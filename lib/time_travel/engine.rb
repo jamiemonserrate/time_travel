@@ -10,11 +10,11 @@ module TimeTravel
     initializer 'railstimetravel.app_controller' do |app|
       ActiveSupport.on_load(:action_controller) do
         #unless Rails.env.production? || Rails.env.test? || Rails.env.performance?
-        #  if defined? ActionController::API
-        #    ActionController::API.class_eval do
-        #      include RailsTimeTravel::ControllerAdditions
-        #    end
-        #  end
+          if defined? ActionController::API
+            ActionController::API.class_eval do
+              include TimeTravel::ControllerAdditions
+            end
+          end
 
         if defined? ActionController::Base
           ActionController::Base.class_eval do
