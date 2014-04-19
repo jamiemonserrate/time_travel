@@ -3,6 +3,7 @@ PATH
   specs:
     time_travel (0.0.1)
       rails (~> 4.0.4)
+      timecop (= 0.7.1)
 
 GEM
   remote: https://rubygems.org/
@@ -85,6 +86,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.3)
     tilt (1.4.1)
+    timecop (0.7.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
