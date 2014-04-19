@@ -1,7 +1,7 @@
 module TimeTravel
   class TimeController < ApplicationController
     def index
-      render text: Time.now
+      render text: Time.zone.now
     end
 
     def travel
