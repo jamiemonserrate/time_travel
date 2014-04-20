@@ -1,17 +1,15 @@
 $:.push File.expand_path("../lib", __FILE__)
 
-# Maintain your gem's version:
 require "time_travel/version"
 
-# Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "time_travel"
   s.version     = TimeTravel::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of TimeTravel."
-  s.description = "TODO: Description of TimeTravel."
+  s.authors     = ["Jamie Monserrate"]
+  s.email       = ["jamiemonserrate@gmail.com"]
+  s.homepage    = "https://github.com/jamiemonserrate/time_travel"
+  s.summary     = "Allows users to time travel using timecop across multiple rails apps"
+  s.description = "Allows users to time travel using timecop across multiple rails apps"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
