@@ -17,5 +17,13 @@ describe 'TimeTravel' do
 
       expect(response.body).to eq('2014-01-04 00:00:00 UTC')
     end
+
+    it 'should be able to time travel for regular rails controllers' do
+      get 'time_travel/time/travel/5/1/2014'
+
+      get 'regular_rails_controller_time'
+
+      expect(response.body).to eq('2014-01-05 00:00:00 UTC')
+    end
   end
 end
