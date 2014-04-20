@@ -8,28 +8,26 @@ module TimeTravel
     end
 
     config.after_initialize do
-      ActiveSupport.on_load(:action_controller) do
-        #unless Rails.env.production? || Rails.env.test? || Rails.env.performance?
-        if defined? ActionController::API
-          ActionController::API.class_eval do
-            include TimeTravel::ControllerAdditions
-          end
+      #unless Rails.env.production? || Rails.env.test? || Rails.env.performance?
+      if defined? ActionController::API
+        ActionController::API.class_eval do
+          include TimeTravel::ControllerAdditions
         end
+      end
 
-        if defined? ActionController::Base
-          ActionController::Base.class_eval do
-            include TimeTravel::ControllerAdditions
-          end
+      if defined? ActionController::Base
+        ActionController::Base.class_eval do
+          include TimeTravel::ControllerAdditions
         end
+      end
 
-        if File.exist?(Rails.root + 'lib/jobs/resque_job.rb')
-          require Rails.root + 'lib/jobs/resque_job'
-          class ::Jobs::ResqueJob
-            extend TimeTravel::TimeAdditions
+      if File.exist?(Rails.root + 'lib/jobs/resque_job.rb')
+        require Rails.root + 'lib/jobs/resque_job'
+        class ::Jobs::ResqueJob
+          extend TimeTravel::TimeAdditions
 
-            def self.before_perform_set_time
-              set_time_now
-            end
+          def self.before_perform_set_time
+            set_time_now
           end
         end
       end
