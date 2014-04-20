@@ -7,7 +7,7 @@ module TimeTravel
       g.fixture_replacement :factory_girl, :dir => 'spec/factories'
     end
 
-    initializer 'railstimetravel.app_controller' do |app|
+    config.after_initialize do
       ActiveSupport.on_load(:action_controller) do
         #unless Rails.env.production? || Rails.env.test? || Rails.env.performance?
         if defined? ActionController::API
